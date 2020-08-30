@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#dara 
-data/
+#Data Folder
+aion/data/*
