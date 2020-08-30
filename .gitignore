@@ -134,3 +134,4 @@ data/*
 
 theia/__pycache__/*.pyc
 aion/__pycache__/*.pyc
+.DS_Store
