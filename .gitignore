@@ -131,3 +131,6 @@ dmypy.json
 #Data Folder
 data/*
 .csv
+
+theia/__pycache__/*.pyc
+aion/__pycache__/*.pyc
