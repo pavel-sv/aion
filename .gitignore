@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 #Data Folder
-aion/data/*
+data/*
+.csv
