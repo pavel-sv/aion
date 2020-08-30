@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+        <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet"> 
+    <title>Aion</title>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-theia">
+      <a class="navbar-brand" href="/">AION</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="theia">Theia<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+  </div>
+    </nav>
+  </header>
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="sidebar-sticky pt-3">
+          {% block sidebar %}{% endblock %}
+        </div>
+      </nav>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 theia">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          {% block  main %}{% endblock %}
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

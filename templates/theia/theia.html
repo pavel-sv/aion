@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block sidebar %}
+    <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}  
+        <ul class="nav flex-column border-bottom">
+            <li class="nav-item">
+                <button type="submit" class="text-btn nav-link {% if view == 'view_uploda_file' %} active {% endif %}" name="view-btn" value="upload">Upload File</button>
+            </li>
+            {% if file_dir_not_empty %}
+                <li class="nav-item">
+                    <button type="submit" class="text-btn nav-link {% if view == 'view_uploaded_files' %} active {% endif %}" name="view-btn" value="files">Files</button>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <button type="submit" class="text-btn nav-link {% if view == 'view_delete_files' %} active {% endif %}" name="view-btn" value="delete">Delete Files</button>
+            </li>
+        </ul>
+    </form>
+{% endblock %}
+{% block main %}
+    <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {% if view == 'view_uploda_file'%}
+            {{ form.upload}}
+            <input type="submit" value="Submit">
+        {% elif view == 'view_uploaded_files'%}
+            <div class="d-flex d-row">
+                <div class="col-lg-8">
+                    {% for file in files %}
+                        <div class="row">
+                            <input type="radio" name="sellected" value="{{ file }}">{{ file }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-lg-7">
+                    <div class="row">
+                        <button type="submit" class="btn btn-outline-secondary" name="action-btn" value="format">Process Sellected</button>
+                    </div>
+                    <div class="row mt-2">
+                        {{ form.option }}
+                    </div>       
+                </div>
+            </div>
+        {% elif view == 'view_delete_files'%}
+            {% for file in files %}
+                <div class="row">
+                    <input type="checkbox" name="on_delete" value="{{ file }}"> {{ file }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn  btn-outline-secondary mt-3" name="action-btn" value="delete">Delete</button>
+        {% endif %}
+    </form>
+{% endblock %}
